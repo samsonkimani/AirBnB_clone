@@ -281,6 +281,6 @@ $ python3 unittest -m tests/test_console.py
 
 ## Authors :black_nib:
 
-- **Samson kimani** <[samsonkimani](https://github.com/samsonkimani)>
+- **Sagebeme** <[Sagebeme](https://github.com/sagebeme)>
 - **Samson kimani** <[samsonkimani](https://github.com/samsonkimani)>
 

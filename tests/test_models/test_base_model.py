@@ -3,6 +3,7 @@
 
 from models.base_model import BaseModel
 import unittest
+<<<<<<< HEAD
 import datetime
 import uuid
 
@@ -14,6 +15,13 @@ class TestBaseModel(unittest.TestCase):
 
     def test_Isinstance_of(self):
         """check if these are instances of the modules"""
+=======
+
+class TestBaseModel(unittest.TestCase):
+    """ checking for isinstance """
+ 
+    def Isinstanceof(self):
+>>>>>>> refs/remotes/origin/main
         bm = BaseModel()
         self.assertIsInstance(bm, BaseModel)
         self.assertIsInstance(bm.id, str)

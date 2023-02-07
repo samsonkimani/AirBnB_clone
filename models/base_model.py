@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-
+"""model - basemodel"""
 import uuid
 from datetime import datetime
-"""model - BaseModel"""
+
 
 class BaseModel:
     """ base class for the hbnb """

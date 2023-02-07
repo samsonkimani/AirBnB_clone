@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+import uuid
+from datetime import datetime
+"""model - BaseModel"""
+
+class BaseModel:
+    """ base class for the hbnb """
+    def __init__(self):
+        """ initializing the base model varibles"""
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
+    def __str__(self):
+        """ function str to return the class name id and dictionary"""
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+
+    def save(self):
+        """save function to keep the updated at time"""
+        self.updated_at = datetime.now()
+
+    def to_dict(self):
+        """ the dictionary function to return the created dictionary"""
+        dict_obj = self.__dict__.copy()
+        dict_obj["__class__"] = self.__class__.__name__
+        dict_obj["created_at"] = self.created_at.isoformat()
+        dict_obj["updated_at"] = self.updated_at.isoformat()
+        return dict_obj

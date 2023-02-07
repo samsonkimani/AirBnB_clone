@@ -2,14 +2,11 @@
 """module for testing base class"""
 
 from models.base_model import BaseModel
-from unittest import TestCase
-from unittest.mock import patch
+import unittest
 
 class TestBaseModel(unittest.TestCase):
     """ checking for isinstance """
-   """ def testDocstring():
-        self.assertIsNotNone(__import__("models.base_model").__doc__)"""
-
+ 
     def Isinstanceof(self):
         bm = BaseModel()
         self.assertIsInstance(bm, BaseModel)

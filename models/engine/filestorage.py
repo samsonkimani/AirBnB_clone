@@ -5,9 +5,14 @@ import os.path
 import json
 from models.base_model import BaseModel
 
+<<<<<<< HEAD
 white_list = []
 for key in class_list:
     white_list.append(key)
+=======
+class_list = {"BaseMode": BaseModel}
+
+>>>>>>> 5d3f704853dc90999d746258ba346315b3b8989c
 class FileStorage():
     """ instance of file storage"""
 
@@ -33,7 +38,7 @@ class FileStorage():
         obj_dict = {}
         for key in self.__objects:
             obj_dict[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, "w") as f:
+        with open(self.__file_path, "a", encoding="utf-8") as f:
             json_data = json.dumps(obj_dict)
             f.write(json_data)
 

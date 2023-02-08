@@ -9,7 +9,7 @@ from models.base_model import BaseModel
 class FileStorage():
     """ instance of file storage"""
 
-    __files_path = "file.json"
+    __file_path = "file.json"
     __objects = {}
 
     def __init__(self):
@@ -19,19 +19,19 @@ class FileStorage():
     def all(self):
         """ returns the dictonary '__objects' """
 
-        return self.__obejcts
+        return self.__objects
     def new(self, obj):
         """ sets in __objects the obj with key '<obj class name>.id' """
-        
+
         key = obj.__class__.__name__+"."+obj.id
-        self.__object.update({key: obj})
+        self.__objects.update({key: obj})
 
     def save(self):
         """ serializes __objects to the JSON file (path:file__path) """
         dict = {}
-        for key in self.__object:
-            dict[key] = self.__object[key].to_dict()
-        with open(self.__file.__path, "w") as f
+        for key in self.__objects:
+            dict[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, "w") as f:
             json.dump(dict, f)
 
     def reload(self):

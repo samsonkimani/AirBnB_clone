@@ -41,7 +41,5 @@ class FileStorage():
                 dict = json.load(f)
                 for i in dict:
                     self.__objects[i] = class_list[dict[i]["__class__"]](**dict[i])
-        except FileNotFoundError:
-            print("Presistent load failed"
-                    "'{}' do not exist".format(self.__file_path)
-                    )
+        except:
+            pass

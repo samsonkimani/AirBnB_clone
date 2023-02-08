@@ -21,7 +21,6 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
-            models.storage.save()
 
     def __str__(self):
         """ function str to return the class name id and dictionary"""

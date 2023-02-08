@@ -28,18 +28,21 @@ class FileStorage():
 
     def save(self):
         """ serializes __objects to the JSON file (path:file__path) """
-        dict = {}
+        obj_dict = {}
         for key in self.__objects:
-            dict[key] = self.__objects[key].to_dict()
+            obj_dict[key] = self.__objects[key].to_dict()
         with open(self.__file_path, "w") as f:
-            json.dump(dict, f)
+            json_data = json.dumps(obj_dict)
+            f.write(json_data)
+
 
     def reload(self):
         """ deserializes the JSON file to __objects (when JSON (__file_path exists) """
         try:
             with open(self.__file_path, r) as f:
-                dict = json.load(f)
-                for i in dict:
-                    self.__objects[i] = class_list[dict[i]["__class__"]](**dict[i])
+                obj_dict = f.read()
+                json.loads(obj_dict)
+                for i in obj_dict.items():
+                    self.__objects[i] = class_list[obj_dict[i]["__class__"]](**obj_dict[i])
         except:
             pass

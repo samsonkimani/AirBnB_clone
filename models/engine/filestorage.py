@@ -5,6 +5,7 @@ import os.path
 import json
 from models.base_model import BaseModel
 
+class_list = {"BaseMode": BaseModel}
 
 class FileStorage():
     """ instance of file storage"""
@@ -31,7 +32,7 @@ class FileStorage():
         obj_dict = {}
         for key in self.__objects:
             obj_dict[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, "w") as f:
+        with open(self.__file_path, "a", encoding="utf-8") as f:
             json_data = json.dumps(obj_dict)
             f.write(json_data)
 

@@ -5,14 +5,9 @@ import os.path
 import json
 from models.base_model import BaseModel
 
-<<<<<<< HEAD
 white_list = []
 for key in class_list:
     white_list.append(key)
-=======
-class_list = {"BaseMode": BaseModel}
-
->>>>>>> 5d3f704853dc90999d746258ba346315b3b8989c
 class FileStorage():
     """ instance of file storage"""
 

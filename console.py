@@ -107,12 +107,12 @@ class HBNBCommand(cmd.Cmd):
         else:
             all_instances = models.storage.all()
             for key, instances in all_instances.items():
-                print(instances)
+                print([str(instances)])
         if class_name in classes:
             all_instances = models.storage.all()
             for key, instance in all_instances.items():
                 if class_name in key:
-                    print(instance)
+                    print([str(instance)])
 
     def do_update(self, args):
         """ update an instance based on a class name an id"""

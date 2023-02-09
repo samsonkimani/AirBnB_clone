@@ -96,6 +96,73 @@ class HBNBCommand(cmd.Cmd):
         if not found:
             print("** no instance found **")
 
+    def do_all(self, args):
+        """
+        Purpose: prints all string representation
+        of all instances based or not on
+        the class name
+        """
+        args = args.split()
+        try:
+            for key, value in models.storage.all().items():
+                if len(args) == 0:
+                    print(value)
+                    continue
+                if len(args) == 1:
+                    if key.split(".")[0] == args[0]:
+                        print(value)
+                        return
+            print("** class doesn't exist **")
+            return
+        except Exception as an_exception:
+            print(an_exception)
+    # end def
+
+    def do_update():
+        """
+        Purpose:  Updates an instance based
+        on the class name and id by adding
+        or updating attribute
+        """
+        args = args.split()
+        try:
+            new_object = models.storage.all()
+            if len(args) == 0:
+                print("** class name missing **")
+                return
+            for key, value in models.storage.all().items():
+                if len(args) >= 2:
+                    if len(args) >= 4:
+                        if key == f"{args[0]}.{args[1]}":
+                            new_object[key].__dict__[args[2]] = args[3].strip('"')
+                            models.storage.save()
+                            return
+                    else:
+                            if args[2]:
+                                print("** value missing **")
+                                return
+                            if args[1]:
+                                print("** attribute name missing **")
+                                return
+                    if len(args) == 1:
+                                if key.split(".")[0] != args[0]:
+                                    print("** class doesn't exist **")
+                                    return
+                                if key.split(".")[0] == args[0]:
+                                    return
+                if len(args) == 1:
+                    if key.split(".")[0] != args[0]:
+                        print("** class doesn't exist **")
+                        return
+                    if key.split(".")[0] == args[0]:
+                        print("** instance id missing **")
+                        return
+            print("** instance id missing **")
+        except Exception as an_exception:
+            print(an_exception)
+
+    # end def
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

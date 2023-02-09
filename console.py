@@ -132,21 +132,21 @@ class HBNBCommand(cmd.Cmd):
         found = False
         key = "{}.{}".format(class_name, instance_id)
         all_instances = models.storage.all()
-        for key, instance in all_instances.items():
-            attribute_name = args[2]
-            if not attribute_name:
-                print("** atribute name missing **")
-                return
-            attribute_value = args[3]
-            if not attribute_value:
-                print("** value missing **")
-                return
+        if len(args) < 3:
+            print("** atribute name missing **")
+            return
+        if len(args) < 4:
+            print("** value missing **")
+            return
+        attribute_name = args[2]
+        attribute_value = args[3]
 
+        for key, instance in all_instances.items():
             if instance_id in key:
                 found = True
                 if len(args) < 5:
                     setattr(instance, attribute_name, attribute_value.strip('"'))
-                    model.storage.save()
+                    models.storage.save()
 
         if not found:
             print("** no instance found **")

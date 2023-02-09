@@ -6,7 +6,8 @@ import models
 from models.base_model import BaseModel
 
 
-classes = {"BaseModel": BaseModel}
+classes = {"BaseModel": BaseModel,
+        "User": User}
 
 class HBNBCommand(cmd.Cmd):
     """ the command line for the hbnb """

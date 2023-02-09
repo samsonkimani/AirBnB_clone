@@ -18,7 +18,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(BaseModel.__str__.__doc__)
         self.assertIsNotNone(BaseModel.save.__doc__)
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
- 
+
     def test_Isinstanceof(self):
         bm = BaseModel()
         self.assertIsInstance(bm, BaseModel)
@@ -33,7 +33,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(bm.id, '56d43177-cc5f-4d6c-a0c1-e167f8c27337')
         self.assertEqual(bm.updated_at, datetime.strptime("2017-09-28T21:03:54.052298", '%Y-%m-%dT%H:%M:%S.%f'))
         self.assertEqual(bm.created_at, datetime.strptime("2017-09-28T21:03:54.052298", '%Y-%m-%dT%H:%M:%S.%f' ))
-        
+
 
     def test_id(self):
         """test if a new id is created"""

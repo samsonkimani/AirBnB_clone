@@ -1,51 +1,58 @@
 #!/usr/bin/python3
-""" File storage modules"""
+"""module of 'FileStorage' class"""
 
 import os.path
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
+class_list = {"BaseModel": BaseModel
+              }
 white_list = []
 for key in class_list:
     white_list.append(key)
 
+
 class FileStorage():
-    """ instance of file storage"""
+    """Representation of a FileStorage"""
 
     __file_path = "file.json"
     __objects = {}
 
     def __init__(self):
-        """ class constructor """
+        """class constructor"""
         pass
 
     def all(self):
-        """ returns the dictonary '__objects' """
-
+        """returns the dictionary '__objects'"""
         return self.__objects
-    def new(self, obj):
-        """ sets in __objects the obj with key '<obj class name>.id' """
 
+    def new(self, obj):
+        """sets in '__objects' the 'obj' with key '<obj class name>.id'"""
         key = obj.__class__.__name__+"."+obj.id
         self.__objects.update({key: obj})
 
     def save(self):
-        """ serializes __objects to the JSON file (path:file__path) """
-        obj_dict = {}
+        """serializes '__objects' to the JSON file (__file_path)"""
+        dict = {}
         for key in self.__objects:
-            obj_dict[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, "a", encoding="utf-8") as f:
-            json_data = json.dumps(obj_dict)
-            f.write(json_data)
-
+            dict[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, "w") as f:
+            json.dump(dict, f)
 
     def reload(self):
-        """ deserializes the JSON file to __objects (when JSON (__file_path exists) """
+        """deserializes the JSON file to '__objects'
+           (only if the JSON file (__file_path) exists, otherwise do nothing.
+           If the file doesn’t exist, no exception should be raised)"""
         try:
-            with open(self.__file_path, r) as f:
-                obj_dict = f.read()
-                json.loads(obj_dict)
-                for i in obj_dict.items():
-                    self.__objects[i] = class_list[obj_dict[i]["__class__"]](**obj_dict[i])
+            with open(self.__file_path, 'r') as f:
+                dict = json.load(f)
+            for i in dict:
+                self.__objects[i] = class_list[dict[i]["__class__"]](**dict[i])
         except:
             pass

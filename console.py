@@ -68,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
                 break
         if not found:
             print("** no instance found **")
-            
+
     def do_destroy(self, args):
         """ deleting an instance"""
         args = args.split(" ")

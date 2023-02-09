@@ -96,6 +96,64 @@ class HBNBCommand(cmd.Cmd):
         if not found:
             print("** no instance found **")
 
+    def do_all(self, args):
+        """ function to print all the string representation of based no ornot based on the classes"""
+        args = args.split(" ")
+        class_name = args[0]
+        if class_name:
+            if class_name not in classes:
+                print("** class doesn't exist **")
+                return
+        else:
+            all_instances = models.storage.all()
+            for key, instances in all_instances.items():
+                print(instances)
+        if class_name in classes:
+            all_instances = models.storage.all()
+            for key, instance in all_instances.items():
+                if class_name in key:
+                    print(instance)
+
+    def do_update(self, args):
+        """ update an instance based on a class name an id"""
+        args = args.split(" ")
+        class_name = args[0]
+
+        if len(args) < 1:
+            print("** class name missing **")
+            return
+        if class_name not in classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        instance_id = args[1]
+        found = False
+        key = "{}.{}".format(class_name, instance_id)
+        all_instances = models.storage.all()
+        for key, instance in all_instances.items():
+            attribute_name = args[2]
+            if not attribute_name:
+                print("** atribute name missing **")
+                return
+            attribute_value = args[3]
+            if not attribute_value:
+                print("** value missing **")
+                return
+
+            if instance_id in key:
+                found = True
+                if len(args) < 5:
+                    setattr(instance, attribute_name, attribute_value.strip('"'))
+                    model.storage.save()
+
+        if not found:
+            print("** no instance found **")
+            return
+
+        
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

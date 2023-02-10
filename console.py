@@ -164,7 +164,7 @@ class HBNBCommand(cmd.Cmd):
         if not found:
             print("** no instance found **")
             return
-     def precmd(self, line):
+    def precmd(self, line):
         """Reformat command line for advanced command syntax.
         Usage: <class name>.<command>([<id> [<*args> or <**kwargs>]])
         (Brackets denote optional fields in usage example.)

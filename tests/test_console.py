@@ -209,3 +209,14 @@ class TestHBNBCommand_show(unittest.TestCase):
         except IOError:
             pass
         FileStorage.__objects = {}
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass

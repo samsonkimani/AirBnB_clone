@@ -262,3 +262,27 @@ class TestHBNBCommand_show(unittest.TestCase):
             with patch("sys.stdout", new=StringIO()) as output:
                 self.assertFalse(HBNBCommand().onecmd("show Review"))
                 self.assertEqual(correct, output.getvalue().strip())
+
+        def test_show_missing_id_dot_notation(self):
+            correct = "** instance id missing **"
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(HBNBCommand().onecmd("BaseModel.show()"))
+                self.assertEqual(correct, output.getvalue().strip())
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(HBNBCommand().onecmd("User.show()"))
+                self.assertEqual(correct, output.getvalue().strip())
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(HBNBCommand().onecmd("State.show()"))
+                self.assertEqual(correct, output.getvalue().strip())
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(HBNBCommand().onecmd("City.show()"))
+                self.assertEqual(correct, output.getvalue().strip())
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(HBNBCommand().onecmd("Amenity.show()"))
+                self.assertEqual(correct, output.getvalue().strip())
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(HBNBCommand().onecmd("Place.show()"))
+                self.assertEqual(correct, output.getvalue().strip())
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(HBNBCommand().onecmd("Review.show()"))
+                self.assertEqual(correct, output.getvalue().strip())

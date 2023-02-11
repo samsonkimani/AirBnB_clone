@@ -21,6 +21,7 @@ classes = {
         "Place": Place,
         "Review": Review
         }
+dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
 
 
 class HBNBCommand(cmd.Cmd):
@@ -171,7 +172,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
 
-    def precmd(self, line):
+    def precmd(self, args):
         """Reformat command line for advanced command syntax.
         Usage: <class name>.<command>([<id> [<*args> or <**kwargs>]])
         (Brackets denote optional fields in usage example.)
@@ -179,18 +180,18 @@ class HBNBCommand(cmd.Cmd):
         _cmd = _cls = _id = _args = ''  # initialize line elements
 
         # scan for general formating - i.e '.', '(', ')'
-        if not ('.' in line and '(' in line and ')' in line):
-            return line
+        if not ('.' in args and '(' in args and ')' in args):
+            return args
 
         try:  # parse line left to right
-            pline = line[:]  # parsed line
+            pline = args[:]  # parsed line
 
             # isolate <class name>
             _cls = pline[:pline.find('.')]
 
             # isolate and validate <command>
             _cmd = pline[pline.find('.') + 1:pline.find('(')]
-            if _cmd not in HBNBCommand.dot_cmds:
+            if _cmd not in dot_cmds:
                 raise Exception
 
             # if parantheses contain arguments, parse them
@@ -208,7 +209,7 @@ class HBNBCommand(cmd.Cmd):
                 pline = pline[2].strip()  # pline is now str
                 if pline:
                     # check for *args or **kwargs
-                    if pline[0] is '{' and pline[-1] is '}' \
+                    if pline[0] == '{' and pline[-1] == '}' \
                             and type(eval(pline)) is dict:
                         _args = pline
                     else:

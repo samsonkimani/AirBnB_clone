@@ -220,3 +220,12 @@ class TestHBNBCommand_show(unittest.TestCase):
             os.rename("tmp", "file.json")
         except IOError:
             pass
+
+    def test_show_missing_class(self):
+        correct = "** class name missing **"
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(HBNBCommand().onecmd("show"))
+            self.assertEqual(correct, output.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(HBNBCommand().onecmd(".show()"))
+            self.assertEqual(correct, output.getvalue().strip())

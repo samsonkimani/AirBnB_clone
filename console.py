@@ -222,6 +222,16 @@ class HBNBCommand(cmd.Cmd):
         finally:
             return line
 
+    def do_count(self, args):
+        """a function to count all instances of a model"""
+        count = 0
+        all_instances = models.storage.all()
+        for key, value in all_instances.items():
+            if args[0] in key:
+                count += 1
+        print(count)
+
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

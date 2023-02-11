@@ -22,6 +22,7 @@ classes = {
         "Review": Review
         }
 
+
 class HBNBCommand(cmd.Cmd):
     """ the command line for the hbnb """
 
@@ -37,6 +38,7 @@ class HBNBCommand(cmd.Cmd):
 
         print()
         return True
+
     def emptyline(self):
         """ the command line should do nothing"""
         pass
@@ -103,14 +105,16 @@ class HBNBCommand(cmd.Cmd):
         all_instances = models.storage.all()
         instance = all_instances.pop(key)
         if instance:
-            del(instance)
+            del (instance)
             models.storage.save()
             found = True
         if not found:
             print("** no instance found **")
 
     def do_all(self, args):
-        """ function to print all the string representation of based no ornot based on the classes"""
+        """ function to print all the string 
+        representation of based no ornot based 
+        on the classes"""
         args = args.split(" ")
         class_name = args[0]
         if class_name:
@@ -164,6 +168,7 @@ class HBNBCommand(cmd.Cmd):
         if not found:
             print("** no instance found **")
             return
+
     def precmd(self, line):
         """Reformat command line for advanced command syntax.
         Usage: <class name>.<command>([<id> [<*args> or <**kwargs>]])
@@ -201,7 +206,7 @@ class HBNBCommand(cmd.Cmd):
                 pline = pline[2].strip()  # pline is now str
                 if pline:
                     # check for *args or **kwargs
-                    if pline[0] is '{' and pline[-1] is'}'\
+                    if pline[0] is '{' and pline[-1] is '}' \
                             and type(eval(pline)) is dict:
                         _args = pline
                     else:
@@ -212,9 +217,7 @@ class HBNBCommand(cmd.Cmd):
         except Exception as mess:
             pass
         finally:
-            return line
-
-        
+            return line  
 
 
 if __name__ == '__main__':

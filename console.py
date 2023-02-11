@@ -162,7 +162,9 @@ class HBNBCommand(cmd.Cmd):
             if instance_id in key:
                 found = True
                 if len(args) < 5:
-                    setattr(instance, attribute_name, attribute_value.strip('"'))
+                    setattr(instance,
+                            attribute_name,
+                            attribute_value.strip('"'))
                     models.storage.save()
 
         if not found:

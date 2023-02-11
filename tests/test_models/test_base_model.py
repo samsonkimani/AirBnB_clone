@@ -7,17 +7,15 @@ from datetime import datetime
 import uuid
 
 
-
-
 class TestBaseModel(unittest.TestCase):
     """ test cases for the base model"""
-   
+
     def __inti__(self, *args, **kwargs):
         """ initializing the init """
         super().__init__(*args, **kwargs)
+
         self.name = "BaseModel"
         self.value = BaseModel
-
 
     def test_base_model_docstrings(self):
         self.assertIsNotNone(BaseModel.__doc__)
@@ -34,13 +32,20 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(bm.updated_at, datetime)
 
     def test_Instatiation_kwags(self):
-        bm_dict = {'id': '56d43177-cc5f-4d6c-a0c1-e167f8c27337','created_at': '2017-09-28T21:03:54.052298','updated_at': '2017-09-28T21:03:54.052298'}
+        bm_dict = {'id': '56d43177-cc5f-4d6c-a0c1-e167f8c27337',
+                   'created_at': '2017-09-28T21:03:54.052298',
+                   'updated_at': '2017-09-28T21:03:54.052298'}
         bm = BaseModel(**bm_dict)
         self.assertIsInstance(bm, BaseModel)
         self.assertEqual(bm.id, '56d43177-cc5f-4d6c-a0c1-e167f8c27337')
-        self.assertEqual(bm.updated_at, datetime.strptime("2017-09-28T21:03:54.052298", '%Y-%m-%dT%H:%M:%S.%f'))
-        self.assertEqual(bm.created_at, datetime.strptime("2017-09-28T21:03:54.052298", '%Y-%m-%dT%H:%M:%S.%f' ))
-
+        self.assertEqual(bm.updated_at,
+                         datetime.
+                         strptime("2017-09-28T21:03:54.052298",
+                                  '%Y-%m-%dT%H:%M:%S.%f'))
+        self.assertEqual(bm.created_at,
+                         datetime.
+                         strptime("2017-09-28T21:03:54.052298",
+                                  '%Y-%m-%dT%H:%M:%S.%f'))
 
     def test_id(self):
         """test if a new id is created"""
@@ -50,7 +55,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_base_model_str(self):
         bm = BaseModel()
-        self.assertEqual(str(bm), "[BaseModel] ({}) {}".format(bm.id, bm.__dict__))
+        self.assertEqual(str(bm), "[BaseModel] ({}) {}".
+                         format(bm.id, bm.__dict__))
 
     def test_basemodel_save(self):
         bm = BaseModel()

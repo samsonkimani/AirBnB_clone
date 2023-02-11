@@ -13,6 +13,7 @@ class TestUser(TestBaseModel):
         super().__init__(*args, **kwargs)
         self.name = "User"
         self.value = User
+
     def test_first_name(self):
         """  testing if the first name is a string"""
         User = self.value()

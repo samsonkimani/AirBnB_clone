@@ -3,6 +3,7 @@
 
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """ this class contains the different attributes of the user """
     email = ''

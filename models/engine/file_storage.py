@@ -11,6 +11,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage:
     __file_path = "file.json"
     __objects = {}
@@ -19,18 +20,25 @@ class FileStorage:
         return FileStorage.__objects
 
     def new(self, obj):
-        key = "{}.{}".format(type(obj).__name__, obj.id)
+        key = "{}.{}".format(type(obj).__name__,
+                             obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
-        with open(FileStorage.__file_path, mode="w", encoding="utf-8") as f:
-            json_str = json.dumps(FileStorage.__objects, default=lambda obj: obj.to_dict())
+        with open(FileStorage.__file_path,
+                  mode="w",
+                  encoding="utf-8") as f:
+            json_str = json.dumps(FileStorage.__objects,
+                                  default=lambda obj: obj.to_dict())
             f.write(json_str)
 
     def reload(self):
         try:
             with open(FileStorage.__file_path, encoding="utf-8")as f:
-                FileStorage.__objects = json.loads(f.read(), object_hook=self.json_to_python)
+                FileStorage.__objects = json.loads(f.
+                                                   read(),
+                                                   object_hook=self.
+                                                   json_to_python)
         except FileNotFoundError:
             pass
 
@@ -45,4 +53,3 @@ class FileStorage:
                 return json_dict
         else:
             return json_dict
-

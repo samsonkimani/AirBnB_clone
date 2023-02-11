@@ -112,8 +112,8 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_all(self, args):
-        """ function to print all the string 
-        representation of based no ornot based 
+        """ function to print all the string
+        representation of based no ornot based
         on the classes"""
         args = args.split(" ")
         class_name = args[0]
@@ -217,7 +217,7 @@ class HBNBCommand(cmd.Cmd):
         except Exception as mess:
             pass
         finally:
-            return line  
+            return line
 
 
 if __name__ == '__main__':

@@ -10,7 +10,14 @@ import uuid
 
 
 class TestBaseModel(unittest.TestCase):
-    """ checking for isinstance """
+    """ test cases for the base model"""
+   
+    def __inti__(self, *args, **kwargs):
+        """ initializing the init """
+        super().__init__(*args, **kwargs)
+        self.name = "BaseModel"
+        self.value = BaseModel
+
 
     def test_base_model_docstrings(self):
         self.assertIsNotNone(BaseModel.__doc__)

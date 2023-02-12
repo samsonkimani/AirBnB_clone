@@ -5,9 +5,8 @@ from models.base_model import BaseModel
 import unittest
 from datetime import datetime
 import uuid
-
-
-
+import json
+import os
 
 class TestBaseModel(unittest.TestCase):
     """ test cases for the base model"""
@@ -17,6 +16,12 @@ class TestBaseModel(unittest.TestCase):
         super().__init__(*args, **kwargs)
         self.name = "BaseModel"
         self.value = BaseModel
+
+    def tearDown(self):
+        try:
+            os.remove('file.json')
+        except:
+            pass
 
 
     def test_base_model_docstrings(self):
@@ -69,5 +74,3 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(bm_dict["__class__"], "BaseModel")
 
 
-if __name__ == '__main__':
-    unittest.main()

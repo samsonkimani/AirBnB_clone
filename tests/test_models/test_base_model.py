@@ -1,22 +1,43 @@
 #!/usr/bin/python3
 """module for testing base class"""
 
+import os
+import json
+import models
 from models.base_model import BaseModel
 import unittest
 from datetime import datetime
 import uuid
+<<<<<<< HEAD
 import json
 import os
+||||||| 038fd11
+
+
+
+=======
+from models.engine.file_storage import FileStorage
+from models.user import User
+from models.state import State
+from models.place import Place
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+
+
+>>>>>>> refs/remotes/origin/main
 
 class TestBaseModel(unittest.TestCase):
     """ test cases for the base model"""
-   
+
     def __inti__(self, *args, **kwargs):
         """ initializing the init """
         super().__init__(*args, **kwargs)
+
         self.name = "BaseModel"
         self.value = BaseModel
 
+<<<<<<< HEAD
     def tearDown(self):
         try:
             os.remove('file.json')
@@ -24,6 +45,10 @@ class TestBaseModel(unittest.TestCase):
             pass
 
 
+||||||| 038fd11
+
+=======
+>>>>>>> refs/remotes/origin/main
     def test_base_model_docstrings(self):
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(BaseModel.__init__.__doc__)
@@ -39,13 +64,20 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(bm.updated_at, datetime)
 
     def test_Instatiation_kwags(self):
-        bm_dict = {'id': '56d43177-cc5f-4d6c-a0c1-e167f8c27337','created_at': '2017-09-28T21:03:54.052298','updated_at': '2017-09-28T21:03:54.052298'}
+        bm_dict = {'id': '56d43177-cc5f-4d6c-a0c1-e167f8c27337',
+                   'created_at': '2017-09-28T21:03:54.052298',
+                   'updated_at': '2017-09-28T21:03:54.052298'}
         bm = BaseModel(**bm_dict)
         self.assertIsInstance(bm, BaseModel)
         self.assertEqual(bm.id, '56d43177-cc5f-4d6c-a0c1-e167f8c27337')
-        self.assertEqual(bm.updated_at, datetime.strptime("2017-09-28T21:03:54.052298", '%Y-%m-%dT%H:%M:%S.%f'))
-        self.assertEqual(bm.created_at, datetime.strptime("2017-09-28T21:03:54.052298", '%Y-%m-%dT%H:%M:%S.%f' ))
-
+        self.assertEqual(bm.updated_at,
+                         datetime.
+                         strptime("2017-09-28T21:03:54.052298",
+                                  '%Y-%m-%dT%H:%M:%S.%f'))
+        self.assertEqual(bm.created_at,
+                         datetime.
+                         strptime("2017-09-28T21:03:54.052298",
+                                  '%Y-%m-%dT%H:%M:%S.%f'))
 
     def test_id(self):
         """test if a new id is created"""
@@ -55,7 +87,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_base_model_str(self):
         bm = BaseModel()
-        self.assertEqual(str(bm), "[BaseModel] ({}) {}".format(bm.id, bm.__dict__))
+        self.assertEqual(str(bm), "[BaseModel] ({}) {}".
+                         format(bm.id, bm.__dict__))
 
     def test_basemodel_save(self):
         bm = BaseModel()
@@ -74,3 +107,31 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(bm_dict["__class__"], "BaseModel")
 
 
+<<<<<<< HEAD
+||||||| 038fd11
+if __name__ == '__main__':
+    unittest.main()
+=======
+class TestFileStorage_instantiation(unittest.TestCase):
+    """Unittests for testing instantiation of the FileStorage class."""
+
+    def test_FileStorage_instantiation_no_args(self):
+        self.assertEqual(type(FileStorage()), FileStorage)
+
+    def test_FileStorage_instantiation_with_arg(self):
+        with self.assertRaises(TypeError):
+            FileStorage(None)
+
+    def test_FileStorage_file_path_is_private_str(self):
+        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
+
+    def testFileStorage_objects_is_private_dict(self):
+        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
+
+    def test_storage_initializes(self):
+        self.assertEqual(type(models.storage), FileStorage)
+
+
+if __name__ == '__main__':
+    unittest.main()
+>>>>>>> refs/remotes/origin/main

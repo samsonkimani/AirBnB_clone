@@ -4,6 +4,7 @@
 from tests.test_models.test_base_model import TestBaseModel
 from models.city import City
 
+
 class TestCity(TestBaseModel):
     """ testing the city model"""
 

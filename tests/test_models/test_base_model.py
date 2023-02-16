@@ -9,6 +9,7 @@ import uuid
 import json
 import os
 
+
 class TestBaseModel(unittest.TestCase):
     """ test cases for the base model"""
 
@@ -22,9 +23,8 @@ class TestBaseModel(unittest.TestCase):
     def tearDown(self):
         try:
             os.remove('file.json')
-        except:
+        except PassTheError:
             pass
-
 
     def test_base_model_docstrings(self):
         self.assertIsNotNone(BaseModel.__doc__)
@@ -86,4 +86,3 @@ class TestBaseModel(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-

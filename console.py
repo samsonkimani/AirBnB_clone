@@ -67,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
         "Usage: show <class> <id> or <class>.show(<id>)\n        "
         "Display the string representation of a class instance of"
         " a given id."
-        
+
         args = args.split()
         if not args:
             print("** class name missing **")
@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
         "Display string representations of all instances of a given class"
         ".\n        If no class is specified, displays all instantiated "
         "objects."
-       
+
         args = args.split(" ")
         class_name = args[0]
         if class_name:
@@ -141,48 +141,48 @@ class HBNBCommand(cmd.Cmd):
                     print([str(instance)])
 
     def do_update(self, args):
-       "Usage: update <class> <id> <attribute_name> <attribute_value> or"
-       "\n  <class>.update(<id>, <attribute_name>, <attribute_value"
-       ">) or\n       <class>.update(<id>, <dictionary>)\n        "
-       "Update a class instance of a given id by adding or updating\n   "
-       "     a given attribute key/value pair or dictionary."
-       args = args.split()
-       class_name = args[0]
+        "Usage: update <class> <id> <attribute_name> <attribute_value> or"
+        "\n  <class>.update(<id>, <attribute_name>, <attribute_value"
+        ">) or\n       <class>.update(<id>, <dictionary>)\n        "
+        "Update a class instance of a given id by adding or updating\n   "
+        "     a given attribute key/value pair or dictionary."
+        args = args.split()
+        class_name = args[0]
 
-       if len(args) < 1:
-           print("** class name missing **")
-           return
-       if class_name not in classes:
-           print("** class doesn't exist **")
-           return
-       if len(args) < 2:
-           print("** instance id missing **")
-           return
-       instance_id = args[1]
-       found = False
-       key = "{}.{}".format(class_name, instance_id)
-       all_instances = models.storage.all()
-       if len(args) < 3:
-           print("** atribute name missing **")
-           return
-       if len(args) < 4:
-           print("** value missing **")
-           return
-       attribute_name = args[2]
-       attribute_value = args[3]
+        if len(args) < 1:
+            print("** class name missing **")
+            return
+        if class_name not in classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        instance_id = args[1]
+        found = False
+        key = "{}.{}".format(class_name, instance_id)
+        all_instances = models.storage.all()
+        if len(args) < 3:
+            print("** atribute name missing **")
+            return
+        if len(args) < 4:
+            print("** value missing **")
+            return
+        attribute_name = args[2]
+        attribute_value = args[3]
 
-       for key, instance in all_instances.items():
-           if instance_id in key:
-               found = True
-               if len(args) < 5:
-                   setattr(instance,
-                           attribute_name,
-                           attribute_value.strip('"'))
-                   models.storage.save()
+        for key, instance in all_instances.items():
+            if instance_id in key:
+                found = True
+                if len(args) < 5:
+                    setattr(instance,
+                            attribute_name,
+                            attribute_value.strip('"'))
+                    models.storage.save()
 
-       if not found:
-           print("** no instance found **")
-           return
+        if not found:
+            print("** no instance found **")
+            return
 
     def precmd(self, args):
         """Reformat command line for advanced command syntax.

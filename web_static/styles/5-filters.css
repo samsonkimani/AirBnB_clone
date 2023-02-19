@@ -4,10 +4,10 @@
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    display: inline-block;
+    display:flex
     /* flex-direction: row; */
     /* justify-content: flex-start; */
-    /* align-items: center; */
+    align-items: center;
 }
 
 button {
@@ -32,8 +32,8 @@ button {
 .locations, .amenities {
     height: 100%;
     width: 25%;
-    display: inline-block;
-    text-align: justify;
+    /* display: inline-block; */
+    /* text-align: justify; */
 
 }
 

@@ -1,0 +1,318 @@
+body {
+    margin: 0px;
+    padding: 0px;
+
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular, "Helvetica Neue", Helvatica, Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+header {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.header_logo {
+    height: 100%;
+    width :142px;
+    background-image: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/logo.png);
+    background-repeat: no-repeat;
+    background-position: canter;
+    margin-left: 20px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+    border-top: 1px solid #CCCCCC;
+}
+
+.filters {
+    display: block;
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+}
+
+button{
+    color: #FFFFFF;
+    font-size: 18px;
+    height: 48px;
+    width: 20%;
+    background-color: #FF5A5F;
+    border-style: none;
+    border-radius: 4px;
+    float: right;
+    margin-top: 11px;
+    margin-bottom: 11px;
+    margin-right: 30px;
+}
+
+button:hover{
+    opacity: 90%;
+}
+
+.locations {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 25%;
+    margin-left: 1px;
+    border-right: 1px solid #DDDDDD;
+}
+
+.filters .amenities {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 25%;
+}
+
+h3 {
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+
+.popover {
+    list-style-type: none;
+    display: none;
+    background-color: #FAFAFA;
+    width: 100%;
+    margin-left: -1px;
+    margin-top: 8px;
+    padding: 20px 0px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    /* z-index: inherit; */
+}
+
+.locations:hover .popover {
+display: inline-block;
+}
+
+.amenities:hover .popover{
+    display: inline-block;
+}
+.places {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 45px auto;
+    text-align: center;
+}
+
+article {
+    display: flex;
+    width: 390px;
+    flex: none;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+
+}
+
+
+article h2 {
+    font-size: 30px;
+    padding: 0px;
+    margin: 10px auto;
+}
+
+
+h1 {
+	text-align: left;
+	width: 95%;
+	/* display: block; */
+	margin-top: 0px;
+	margin-left: 20px;
+	margin-bottom: 5px;
+	font-size: 30px;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 80px;
+    width: 100%;
+}
+
+.price_by_night {
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    position: absolute;
+    right: 0;
+    line-height: 60px;
+    color: #FF5A5F;
+    font-size: 30px;
+    padding: 5px;
+    border: 4px solid #FF5A5F;
+    /* float: right; */
+    min-width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.information {
+    display: block;
+    justify-content: space-around;
+    height: 80px;
+    width: 100%;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    padding-top: 5px;
+    padding-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.max-guest, .number_of_rooms, .number_bathroom {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.user {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.description {
+    text-align: left;
+}
+
+.bed_icon {
+    display: inline-block;
+    background-image: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon_bed.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+}
+
+.bath_icon {
+    display: inline-block;
+    background-image: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon_bath.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+}
+
+.guest_icon {
+    display: inline-block;
+    background-image: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon_group.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+}
+
+article .amenities {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.article_subtitle {
+    font-size: 16px;
+    text-align: left;
+    width: 100%;
+    border-bottom: 1px solid #DDDDDD;
+    padding: 0px;
+    margin:0px;
+    padding-bottom: 10px;
+}
+
+article ul {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+article li{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.reviews {
+    margin-top: 40px;
+    width:100%;
+}
+
+.review_item {
+    margin-bottom: 10px;
+}
+.review_text {
+    margin: 0px;
+}
+
+article h3 {
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 0px;
+}
+
+.tv_icon {
+    display: inline-block;
+    background-image: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon_tv.png);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.wifi_icon {
+    display: inline-block;
+    background-image: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon_wifi.png);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.pet_icon {
+    display: inline-block;
+    background-image: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon_pets.png);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
